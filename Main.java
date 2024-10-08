@@ -1,4 +1,5 @@
 import static java.lang.System.out;
+import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
 
@@ -195,8 +196,18 @@ public class Main {
         return result;
     }
 
+    // ввод массива
+    public int[] inputArray(Scanner scanner) {
+        System.out.print("Введите количество элементов массива: ");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        return arr;
+    }
 
-    
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Main tasks = new Main();
@@ -224,7 +235,7 @@ public class Main {
             out.println("47 - Реверс массива");
             out.println("49 - Найти все индексы вхождений числа x");
             out.println("0 - Выход");
-            //out.print("Номер: ");
+            out.print("Номер: ");
 
             int choice = in.nextInt();
 
@@ -354,40 +365,45 @@ public class Main {
 
                 case 41:
                     // метод findFirst
-                    out.print("Введите число для поиска: ");
+                    int[] arr1 = tasks.inputArray(in);
+                    System.out.print("Введите число для поиска: ");
                     int numFind = in.nextInt();
-                    out.println("Индекс первого вхождения: " + tasks.findFirst(arr, numFind));
+                    System.out.println("Индекс первого вхождения: " + tasks.findFirst(arr1, numFind));
                     break;
 
                 case 43:
                     // метод maxAbs
-                    out.println("Наибольшее по модулю значение: " + tasks.maxAbs(arr));
+                    int[] arr2 = tasks.inputArray(in);
+                    System.out.println("Наибольшее по модулю значение: " + tasks.maxAbs(arr2));
                     break;
 
                 case 45:
                     // метод add
-                    out.print("Введите количество элементов массива для вставки: ");
+                    int[] arr3 = tasks.inputArray(in); // Исходный массив
+                    System.out.print("Введите количество элементов массива для вставки: ");
                     int n = in.nextInt();
                     int[] ins = new int[n];
-                    out.println("Введите элементы массива для вставки:");
+                    System.out.println("Введите элементы массива для вставки:");
                     for (int i = 0; i < n; i++) {
                         ins[i] = in.nextInt();
                     }
-                    out.print("Введите позицию для вставки: ");
+                    System.out.print("Введите позицию для вставки: ");
                     int pos = in.nextInt();
-                    out.println("Результат вставки: " + Arrays.toString(tasks.add(arr, ins, pos)));
+                    System.out.println("Результат вставки: " + Arrays.toString(tasks.add(arr3, ins, pos)));
                     break;
 
                 case 47:
                     // метод reverseBack
-                    out.println("Реверс массива: " + Arrays.toString(tasks.reverseBack(arr)));
+                    int[] arr4 = tasks.inputArray(in);
+                    System.out.println("Реверс массива: " + Arrays.toString(tasks.reverseBack(arr4)));
                     break;
 
                 case 49:
                     // метод findAll
-                    out.print("Введите число для поиска всех вхождений: ");
+                    int[] arr5 = tasks.inputArray(in);
+                    System.out.print("Введите число для поиска всех вхождений: ");
                     int numFindAll = in.nextInt();
-                    out.println("Индексы всех вхождений: " + Arrays.toString(tasks.findAll(arr, numFindAll)));
+                    System.out.println("Индексы всех вхождений: " + Arrays.toString(tasks.findAll(arr5, numFindAll)));
                     break;
 
                 case 0:
@@ -399,6 +415,7 @@ public class Main {
                     out.println("Выберите номер из списка выше!");
             }
         }
-        in.close(); //закрываем сканнер ввод
+
+        //in.close(); //закрываем сканнер ввод
     }
 }
