@@ -76,7 +76,7 @@ public class Main {
     // Метод для вывода всех чисел от 0 до x включительно
     public String listNums(int x) {
         StringBuilder result = new StringBuilder("0");
-        for (int i = 0; i <= x; i++) {
+        for (int i = 1; i <= x; i++) {
             result.append(" ").append(Integer.toString(i));
         }
         return result.toString();
@@ -85,7 +85,7 @@ public class Main {
     // Метод для вывода всех четных чисел от 0 до x включительно
     public String chet(int x) {
         StringBuilder result = new StringBuilder("0");
-        for (int i = 0; i <= x; i += 2) {
+        for (int i = 2; i <= x; i += 2) {
             result.append(" ").append(i);
         }
         return result.toString();
@@ -179,12 +179,10 @@ public class Main {
                 count++;
             }
         }
-
         // Если вхождений нет, возвращаем пустой массив
         if (count == 0) {
             return new int[0];
         }
-
         // Создаем массив для индексов вхождений
         int[] result = new int[count];
         int index = 0;
